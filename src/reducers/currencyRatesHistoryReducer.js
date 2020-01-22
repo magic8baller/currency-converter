@@ -1,9 +1,9 @@
 import {SET_DATE_CURRENCY_RATE, GET_DATE_CURRENCY_RATE, SET_BASE} from '../constants'
-import {formatDate} from '../lib/formatDate'
+
 
 const initialState = {
 	base: 'USD',
-	date: formatDate(new Date()),
+	date: new Date().toISOString().slice(0, 10),
 	rates: ''
 }
 
