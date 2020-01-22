@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
-import fuelSavings from './fuelSavingsReducer';
-import { connectRouter } from 'connected-react-router'
+ import { combineReducers } from 'redux';
+ import themeReducer from './themeReducer'
+ import currencyConversionReducer from './currencyConversionReducer'
 
-const rootReducer = history => combineReducers({
-  router: connectRouter(history),
-  fuelSavings,
-});
-
-export default rootReducer;
+combineReducers({
+	test: () => 'hello',
+	currency: currencyConversionReducer,
+	theme: themeReducer
+})
+ export default combineReducers;
