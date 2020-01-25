@@ -1,8 +1,6 @@
-import {FETCH_ERROR, GET_CONVERSION_DATA, SET_LEFT_CURRENCY_AMOUNT, SET_RIGHT_CURRENCY_AMOUNT, SET_LEFT_CURRENCY, SET_CONVERSION_RATES, SET_RIGHT_CURRENCY, SWAP_CURRENCY} from '../constants/actionTypes.js'
+import {FETCH_ERROR, GET_CONVERSION_DATA, SET_CONVERSION_RATES, SET_LEFT_CURRENCY, SET_LEFT_CURRENCY_AMOUNT, SET_RIGHT_CURRENCY, SET_RIGHT_CURRENCY_AMOUNT, SWAP_CURRENCY} from '../constants/actionTypes.js'
 
-const initialState = './initialState.js'
-
-export default function (state = {
+const initialState = {
 	rates: null,
 	base: 'USD',
 	currencies: '',
@@ -10,7 +8,9 @@ export default function (state = {
 	rightAmount: '',
 	leftCurrencySelect: 'Select or enter a currency',
 	rightCurrencySelect: 'Select or enter a target currency'
-}, action) {
+}
+
+export default function (state = initialState, action) {
 	switch (action.type) {
 		case SET_CONVERSION_RATES:
 			return {...state, rates: action.payload.rates, base: action.payload.base, errors: ''}
@@ -27,8 +27,8 @@ export default function (state = {
 		case SET_RIGHT_CURRENCY_AMOUNT:
 			return {...state, rightAmount: action.payload}
 
-			case SWAP_CURRENCY:
-				return {...state, errors: ''}
+		case SWAP_CURRENCY:
+			return {...state, errors: ''}
 		case FETCH_ERROR:
 			return {
 				...state, ...action.payload

@@ -1,7 +1,9 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import createRootReducer from '../reducers';
+import {createBrowserHistory} from "history";
 
+export const history = createBrowserHistory()
 function configureStore() {
   const middlewares = [
     thunk,

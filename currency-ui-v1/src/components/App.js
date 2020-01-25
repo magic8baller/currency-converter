@@ -1,12 +1,8 @@
-/** @jsx jsx */
-import {css, jsx} from '@emotion/core';
-import {Component} from 'react';
+import {css} from '@emotion/core';
 import ThemeButton from '../styles/ThemeButton';
-class App extends Component {
-	render () {
-		const {children, setIsDark} = this.props
-		return (
-			<div css={theme => css`
+import React from 'react'
+const App = ({children, setIsDark, isDark}) => (
+	<div css={theme => css`
 				padding: 20px;
 				background-color: ${theme.background};
 				color: ${theme.text};
@@ -14,16 +10,23 @@ class App extends Component {
 				transition-duration: 0.2s;
 				transition-property: background-color, color;
 			`}>
-				<ThemeButton text={`Change to ${this.props.isDark ? "light" : "dark"} mode`} onClick={() => setIsDark()} />
-				<div css={css`
-				text-align: center;
-				`}>
-					{children}
-				</div>
-			</div>);
-	}
-
-}
-
+		<ThemeButton css={theme => css`
+			border: 2px solid ${theme.buttonBorder};
+			background-color: ${theme.buttonBg};
+			color: ${theme.buttonText};
+			:hover {
+				background-color: ${theme.buttonBgHover};
+				color: ${theme.buttonTextHover};
+			}
+		`} onClick={() => setIsDark()}>
+			Change to {isDark ? "light" : "dark"} mode
+		</ThemeButton>
+		<div css={css`
+			text-align: center;
+		`}>
+			{children}
+		</div>
+	</div>
+)
 
 export default App

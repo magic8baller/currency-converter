@@ -1,16 +1,13 @@
-import {SET_IS_DARK, SET_THEME} from '../constants/actionTypes.js'
+import {SET_IS_DARK} from '../constants/actionTypes.js'
 
 const initialState = {
-isDark: false
+	isDark: window.matchMedia("(prefers-color-scheme: dark)").matches
 }
 
 export default function (state = initialState, action) {
 	switch (action.type) {
 		case SET_IS_DARK:
 			return {...state, isDark: !state.isDark}
-			case SET_THEME:
-				return {...state, theme: action.payload}
-
 		default:
 			return state
 	}

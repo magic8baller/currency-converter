@@ -1,3 +1,4 @@
+import {formatDate} from '../lib/formatDate'
 export default {
 	currencyConversion: {
 		rates: null,
@@ -10,7 +11,7 @@ export default {
 	},
 	historicalRate: {
 		base: 'USD',
-		date: '',
+		date: formatDate(new Date()),
 		rates: ''
 	}
 };
